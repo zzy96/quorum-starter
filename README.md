@@ -1,4 +1,5 @@
-# 7nodes (REFERENCE FROM jpmorganchase/quorum-examples)
+# 7nodes
+(README is a copy from [quorum-examples](https://github.com/jpmorganchase/quorum-examples))
 This repo is a modification on 7node example
 ## Demonstrating Privacy
 The 7nodes example comes with some simple contracts to demonstrate the privacy features of Quorum.  In this demo we will:
