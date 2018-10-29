@@ -1,6 +1,6 @@
 #!/bin/bash
 # e.g.
-# ./raft-start-node.sh 1 YES YES 0 full
+# ./raft-start-node.sh 4 YES YES 0 full
 # count=$1
 # nodediscover=$2
 # permissioned=$3
