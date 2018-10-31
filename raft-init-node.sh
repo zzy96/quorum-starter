@@ -1,6 +1,6 @@
 #!/bin/bash
 # e.g.
-# ./raft-init-node.sh 4 YES cluster
+# ./raft-init-node.sh 4 YES cluster (maximum 7)
 
 set -u
 set -e
@@ -46,6 +46,7 @@ if [ "$inittype" == "cluster" ]; then
     do
         rm -rf qdata/dd$i
         rm -rf qdata/c$i
+        rm -rf qdata/logs
     done
 
     # init process

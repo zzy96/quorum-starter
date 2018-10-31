@@ -1,11 +1,10 @@
 #!/bin/bash
 # e.g.
-# ./raft-start-node.sh 4 YES YES 0 full
+# ./raft-start-node.sh 4 YES YES 0
 # count=$1
 # nodediscover=$2
 # permissioned=$3
 # peerid=$4
-# gcmode=$5
 
 set -u
 set -e
@@ -14,16 +13,16 @@ source ./format.sh
 start_raft(){
     node=$1
     privmode=$2
-    gcmode=$3
-    nodediscover=$4
-    permissioned=$5
-    peerid=$6
+    nodediscover=$3
+    permissioned=$4
+    peerid=$5
 
     let k=1
 
     j="$(($node-$k))"
 
     NETWORK_ID=$(cat genesis.json | grep chainId | awk -F " " '{print $2}' | awk -F "," '{print $1}')
+    ARGS=""
 
     if [ $NETWORK_ID -eq 1 ]
     then
@@ -32,13 +31,6 @@ start_raft(){
 	      echo "  1337 is the recommend ChainId for Geth private clients."
     fi
     mkdir -p qdata/logs
-
-    if [ "$gcmode" == "full" ]
-    then
-        ARGS="--gcmode full "
-    else
-        ARGS="--gcmode archive "
-    fi
 
     if [ "$nodediscover" != "YES" ]
     then
@@ -50,14 +42,14 @@ start_raft(){
         ARGS+=" --permissioned "
     fi
 
-    ARGS+="--verbosity 5 --networkid $NETWORK_ID --raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints"
+    ARGS+=" --verbosity 5 --networkid $NETWORK_ID --raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints "
 
     if [ "$peerid" != "0" ]
     then
         ARGS+=" --raftjoinexisting $peerid "
     fi
+    echo "PRIVATE_CONFIG=qdata/c$node/tm.ipc nohup geth --datadir qdata/dd$node $ARGS --raftport 5040$node --rpcport 2200$j --port 2100$j --unlock 0 --password passwords.txt 2>>qdata/logs/$node.log &"
     PRIVATE_CONFIG=qdata/c$node/tm.ipc nohup geth --datadir qdata/dd$node $ARGS --raftport 5040$node --rpcport 2200$j --port 2100$j --unlock 0 --password passwords.txt 2>>qdata/logs/$node.log &
-
 
 }
 ###### main execution #######################################
@@ -66,7 +58,6 @@ count=$1
 nodediscover=$2
 permissioned=$3
 peerid=$4
-gcmode=$5
 
 if [ "$peerid" == "0" ]
 then
@@ -82,5 +73,5 @@ nohup ./tessera-start-node.sh --nodelow $start --nodehigh $count
 for i in $(seq "$start" "$count")
 do
     echo "Starting geth node - $i"
-    start_raft $i tessera $gcmode $nodediscover $permissioned $peerid
+    start_raft $i tessera $nodediscover $permissioned $peerid
 done
