@@ -16,7 +16,7 @@ while $DOWN; do
 	i=`netstat -n | grep TIME_WAIT | grep -v 443 | wc -l`
 	if [ $i -gt 1 ]
 	then
-		echo "Waiting for TIME_WAIT connections to close"
+		echo "Waiting for $i connections to close"
 		DOWN=true
 	else
 		echo "All connections closed"

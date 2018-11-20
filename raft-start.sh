@@ -1,10 +1,9 @@
 #!/bin/bash
 # e.g.
-# ./raft-start-node.sh 4 YES YES 0
+# ./raft-start.sh 4 YES 0
 # count=$1
-# nodediscover=$2
-# permissioned=$3
-# peerid=$4
+# permissioned=$2
+# peerid=$3
 
 set -u
 set -e
@@ -13,7 +12,7 @@ source ./format.sh
 start_raft(){
     node=$1
     privmode=$2
-    nodediscover=$3
+    nodiscover=$3
     permissioned=$4
     peerid=$5
 
@@ -32,7 +31,7 @@ start_raft(){
     fi
     mkdir -p qdata/logs
 
-    if [ "$nodediscover" != "YES" ]
+    if [ "$nodiscover" == "YES" ]
     then
         ARGS+=" --nodiscover "
     fi
@@ -55,9 +54,8 @@ start_raft(){
 ###### main execution #######################################
 # input total number of nodes to start (say 4), node is permissioned or not
 count=$1
-nodediscover=$2
-permissioned=$3
-peerid=$4
+permissioned=$2
+peerid=$3
 
 if [ "$peerid" == "0" ]
 then
@@ -73,5 +71,5 @@ nohup ./tessera-start-node.sh --nodelow $start --nodehigh $count
 for i in $(seq "$start" "$count")
 do
     echo "Starting geth node - $i"
-    start_raft $i tessera $nodediscover $permissioned $peerid
+    start_raft $i tessera "YES" $permissioned $peerid
 done

@@ -14,10 +14,10 @@ init_raft_node()
 	  echo "[*] Configuring node $nodeid (permissioned = $permissioned)"
 	  cp static-nodes$count.json qdata/dd$nodeid/static-nodes.json
 	  if [ "$permissioned" == "YES" ]; then
-		    cp static-nodes"$count".json qdata/dd$nodeid/permissioned-nodes.json
+		    cp static-nodes$count.json qdata/dd$nodeid/permissioned-nodes.json
 	  fi
 	  cp keys/key$nodeid qdata/dd$nodeid/keystore
-	  cp raft/nodekey$nodeid qdata/dd$nodeid/geth/nodekey
+	  cp keys/nodekey$nodeid qdata/dd$nodeid/geth/nodekey
 	  geth --datadir qdata/dd$nodeid init genesis.json
 }
 init_tessera()
@@ -66,7 +66,7 @@ else
     then
         for d in qdata/dd*
         do
-            cp static-nodes"$count".json $d/permissioned-nodes.json
+            cp static-nodes$count.json $d/permissioned-nodes.json
         done
     fi
     # init the directories for this node
@@ -75,4 +75,4 @@ else
     init_tessera $count $count
 fi
 
-rm static-nodes"$count".json
+rm static-nodes$count.json
