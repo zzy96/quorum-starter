@@ -62,13 +62,14 @@ else
     rm -rf qdata/dd$count
     rm -rf qdata/c$count
     # copy the new static nodes.json as permissioned-nodes.json for already running nodes
-    if [ "$permissioned" == "YES" ]
-    then
-        for d in qdata/dd*
-        do
-            cp static-nodes$count.json $d/permissioned-nodes.json
-        done
-    fi
+    # if uncomment, no manual add node required
+    # if [ "$permissioned" == "YES" ]
+    # then
+    #     for d in qdata/dd*
+    #     do
+    #         cp static-nodes$count.json $d/permissioned-nodes.json
+    #     done
+    # fi
     # init the directories for this node
     init_istanbul_node $count $permissioned $count
     # tessera init
