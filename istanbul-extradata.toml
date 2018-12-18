@@ -2,7 +2,7 @@ vanity = "0x00"
 validators = ["0xd8dba507e85f116b1f7e231ca8525fc9008a6966","0x6571d97f340c8495b661a823f2c2145ca47d63c2","0xe36cbeb565b061217930767886474e3cde903ac5","0xf512a992f3fb749857d758ffda1330e590fa915e"]
 
 # istanbul extra encode --config [path to this file]
-# address list for 7 nodes:
+# address list for 7 nodes (generated from nodekey):
 # 0xd8dba507e85f116b1f7e231ca8525fc9008a6966
 # 0x6571d97f340c8495b661a823f2c2145ca47d63c2
 # 0xe36cbeb565b061217930767886474e3cde903ac5

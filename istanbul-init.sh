@@ -1,6 +1,6 @@
 #!/bin/bash
 # e.g.
-# ./raft-init-node.sh 4 YES cluster (maximum 7)
+# ./istanbul-init-node.sh 4 YES cluster (maximum 7)
 
 set -u
 set -e
