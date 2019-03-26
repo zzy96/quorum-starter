@@ -28,3 +28,24 @@ var simple = simpleContract.new(42, {from:web3.eth.accounts[0], data: bytecode, 
 // QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
 // 1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=
 // oNspPPgszVUFw0qmGFfWwh1uxVUXgvBxleXORHj07g8=
+
+// pragma solidity ^0.4.15;
+//
+// contract SimpleStorage {
+//   uint public storedData;
+//
+//   event valueSet(uint value);
+//
+//   function SimpleStorage(uint initVal) {
+//     storedData = initVal;
+//   }
+//
+//   function set(uint x) {
+//     storedData = x;
+//     emit valueSet(x);
+//   }
+//
+//   function get() constant returns (uint retVal) {
+//     return storedData;
+//   }
+// }
