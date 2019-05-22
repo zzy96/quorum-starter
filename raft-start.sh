@@ -50,6 +50,8 @@ start_raft(){
     fi
     echo "PRIVATE_CONFIG=qdata/c$node/tm.ipc nohup geth --datadir qdata/dd$node $ARGS --raftport 5040$node --wsport 2300$j --rpcport 2200$j --port 2100$j --unlock 0 --password passwords.txt 2>>qdata/logs/$node.log &"
     PRIVATE_CONFIG=qdata/c$node/tm.ipc nohup geth --datadir qdata/dd$node $ARGS --raftport 5040$node --wsport 2300$j --rpcport 2200$j --port 2100$j --unlock 0 --password passwords.txt 2>>qdata/logs/$node.log &
+    # for quorum v2.0.0 and older...
+    # PRIVATE_CONFIG=tm$node.conf nohup geth --datadir qdata/dd$node $ARGS --raftport 5040$node --wsport 2300$j --rpcport 2200$j --port 2100$j --unlock 0 --password passwords.txt 2>>qdata/logs/$node.log &
 
 }
 ###### main execution #######################################
