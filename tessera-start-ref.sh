@@ -63,6 +63,19 @@ elif [  ! -f "${tesseraJar}" ]; then
   usage
 fi
 
+#extract the tessera version from the jar
+TESSERA_VERSION=$(unzip -p $tesseraJar META-INF/MANIFEST.MF | grep Tessera-Version | cut -d" " -f2)
+echo "Tessera version (extracted from manifest file): $TESSERA_VERSION"
+
+TESSERA_CONFIG_TYPE="-09-"
+
+#if the Tessera version is 0.10, use this config version
+if [ "$TESSERA_VERSION" \> "0.10" ] || [ "$TESSERA_VERSION" == "0.10" ]; then
+    TESSERA_CONFIG_TYPE="-09-"
+fi
+
+echo Config type $TESSERA_CONFIG_TYPE
+
 currentDir=`pwd`
 for i in {1..7}
 do
@@ -82,7 +95,7 @@ do
       MEMORY="-Xms128M -Xmx128M"
     fi
 
-    CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config$i.json"
+    CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config$TESSERA_CONFIG_TYPE$i.json"
     echo "$CMD >> qdata/logs/tessera$i.log 2>&1 &"
     ${CMD} >> "qdata/logs/tessera$i.log" 2>&1 &
     sleep 1
@@ -102,7 +115,9 @@ while ${DOWN}; do
         fi
 
         set +e
-        result=$(printf 'GET /upcheck HTTP/1.0\r\n\r\n' | nc -Uv qdata/c${i}/tm.ipc | tail -n 1)
+        #NOTE: if using https, change the scheme
+        #NOTE: if using the IP whitelist, change the host to an allowed host
+        result=$(curl -s http://localhost:900${i}/upcheck)
         set -e
         if [ ! "${result}" == "I'm up!" ]; then
             echo "Node ${i} is not yet listening on http"

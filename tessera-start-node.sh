@@ -92,7 +92,7 @@ do
       MEMORY="-Xms128M -Xmx128M"
     fi
 
-    CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config$i.json"
+    CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config-09-$i.json"
     echo "$CMD >> qdata/logs/tessera$i.log 2>&1 &"
     ${CMD} >> "qdata/logs/tessera$i.log" 2>&1 &
     sleep 1
@@ -112,7 +112,9 @@ while ${DOWN}; do
         fi
 
         set +e
-        result=$(printf 'GET /upcheck HTTP/1.0\r\n\r\n' | nc -Uv qdata/c${i}/tm.ipc | tail -n 1)
+        #NOTE: if using https, change the scheme
+        #NOTE: if using the IP whitelist, change the host to an allowed host
+        result=$(curl -s http://localhost:900${i}/upcheck)
         set -e
         if [ ! "${result}" == "I'm up!" ]; then
             echo "Node ${i} is not yet listening on http"

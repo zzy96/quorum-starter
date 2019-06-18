@@ -2,11 +2,8 @@
 
 echo "[*] Initialising Tessera configuration"
 
-start=$1
-end=$2
-
 currentDir=$(pwd)
-for i in $(seq "$start" "$end")
+for i in {1..7}
 do
     DDIR="${currentDir}/qdata/c${i}"
     mkdir -p ${DDIR}

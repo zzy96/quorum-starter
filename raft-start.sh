@@ -69,7 +69,7 @@ else
 fi
 
 # start the tessera nodes
-nohup ./tessera-start-node.sh --nodelow $start --nodehigh $count
+./tessera-start-node.sh --nodelow $start --nodehigh $count
 
 # start the geth nodes
 for i in $(seq "$start" "$count")

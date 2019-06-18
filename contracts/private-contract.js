@@ -8,6 +8,7 @@ var bytecode = "0x6060604052341561000f57600080fd5b604051602080610149833981016040
 
 var allNodes = ["QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=", "1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=","oNspPPgszVUFw0qmGFfWwh1uxVUXgvBxleXORHj07g8=","R56gy4dn24YOjwyesTczYa8m5xhP6hF2uTMCju/1xkY=","UfNSeSGySeKg11DVNEnqrUtxYRVor4+CvluI8tVv62Y=","ROAZBWtSacxXQrOe3FGAqJDyJjFePR5ce4TSIzmJ0Bc="];
 var fourNodes = ["QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=", "1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=","oNspPPgszVUFw0qmGFfWwh1uxVUXgvBxleXORHj07g8="];
+var twoNodes = ["QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc="];
 var singleNode = [];
 var simpleContract = web3.eth.contract(abi);
 var simple = simpleContract.new(42, {from:web3.eth.accounts[0], data: bytecode, gas: 0x47b760, privateFor: fourNodes}, function(e, contract) {
