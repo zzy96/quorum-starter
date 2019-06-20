@@ -9,16 +9,16 @@ else
 fi
 
 #check for connections open in TIME_WAIT status
-DOWN=true
-while $DOWN; do
-	sleep 3
-	DOWN=false
-	i=`netstat -n | grep TIME_WAIT | grep -v 443 | wc -l`
-	if [ $i -gt 1 ]
-	then
-		echo "Waiting for $i connections to close"
-		DOWN=true
-	else
-		echo "All connections closed"
-	fi
-done
+# DOWN=true
+# while $DOWN; do
+# 	sleep 3
+# 	DOWN=false
+# 	i=`netstat -n | grep TIME_WAIT | grep -v 443 | wc -l`
+# 	if [ $i -gt 1 ]
+# 	then
+# 		echo "Waiting for $i connections to close"
+# 		DOWN=true
+# 	else
+# 		echo "All connections closed"
+# 	fi
+# done

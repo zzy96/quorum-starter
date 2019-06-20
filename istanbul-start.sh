@@ -36,9 +36,9 @@ start_istanbul(){
 
     if [ $node -gt 4 ]
     then
-        ARGS+=" --nodiscover --verbosity 5 --istanbul.blockperiod 3 --networkid $NETWORK_ID --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul "
+        ARGS+=" --nodiscover --verbosity 5 --istanbul.blockperiod 1 --networkid $NETWORK_ID --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul "
     else
-        ARGS+=" --nodiscover --verbosity 5 --istanbul.blockperiod 3 --networkid $NETWORK_ID --syncmode full --mine --minerthreads 1 --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul "
+        ARGS+=" --nodiscover --verbosity 5 --istanbul.blockperiod 1 --networkid $NETWORK_ID --syncmode full --mine --minerthreads 1 --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul "
     fi
 
 

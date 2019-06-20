@@ -39,6 +39,12 @@ cat <<EOF > ${DDIR}/tessera-config-09-${i}.json
             "communicationType" : "REST"
         },
         {
+            "app":"Q2T",
+            "enabled": true,
+             "serverAddress":"http://localhost:1000${i}",
+            "communicationType" : "REST"
+        },
+        {
             "app":"P2P",
             "enabled": true,
             "serverAddress":"http://localhost:900${i}",
