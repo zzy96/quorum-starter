@@ -42,12 +42,7 @@ echo $count
 # check if for cluster  or single node mode
 if [ "$inittype" == "cluster" ]; then
     echo "[*] Cleaning up temporary data directories"
-    for i in $(seq "$count")
-    do
-        rm -rf qdata/dd$i
-        rm -rf qdata/c$i
-        rm -rf qdata/logs
-    done
+    rm -rf qdata
 
     # init process
     for i in $(seq "$count")
