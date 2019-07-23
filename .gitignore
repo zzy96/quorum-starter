@@ -1,7 +1,5 @@
-qdata/
-nohup.out
+# system
 .DS_Store
-node_modules
-package-lock.json
-test.js
-contracts/_*
+# dev
+qdata
+nohup.out
