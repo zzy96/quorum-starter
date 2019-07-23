@@ -1,5 +1,11 @@
 # system
 .DS_Store
+
 # dev
-qdata
-nohup.out
+dev/qdata
+dev/nohup.out
+
+# utils
+utils/keystore
+utils/*.pub
+utils/*.key
