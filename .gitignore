@@ -2,8 +2,8 @@
 .DS_Store
 
 # dev
-dev/qdata
-dev/nohup.out
+qdata
+nohup.out
 
 # utils
 utils/keystore
