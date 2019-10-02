@@ -16,7 +16,7 @@ do
     rm -f "${DDIR}/tm.ipc"
 
     #change tls to "strict" to enable it (don't forget to also change http -> https)
-cat <<EOF > ${DDIR}/tessera-config-09-${i}.json
+cat <<EOF > ${DDIR}/tessera-config-10-${i}.json
 {
     "useWhiteList": false,
     "jdbc": {
@@ -105,7 +105,7 @@ EOF
 
 # Enclave configurations
 
-cat <<EOF > ${DDIR}/tessera-config-enclave-09-${i}.json
+cat <<EOF > ${DDIR}/tessera-config-enclave-10-${i}.json
 {
     "useWhiteList": false,
     "jdbc": {
@@ -169,7 +169,7 @@ cat <<EOF > ${DDIR}/tessera-config-enclave-09-${i}.json
 }
 EOF
 
-cat <<EOF > ${DDIR}/enclave-09-${i}.json
+cat <<EOF > ${DDIR}/enclave-10-${i}.json
 {
     "serverConfigs":[
         {

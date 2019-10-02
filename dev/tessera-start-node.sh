@@ -92,7 +92,7 @@ do
       MEMORY="-Xms128M -Xmx128M"
     fi
 
-    CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config-09-$i.json"
+    CMD="java $jvmParams $DEBUG $MEMORY -jar ${tesseraJar} -configfile $DDIR/tessera-config-10-$i.json"
     echo "$CMD >> qdata/logs/tessera$i.log 2>&1 &"
     ${CMD} >> "qdata/logs/tessera$i.log" 2>&1 &
     sleep 1
