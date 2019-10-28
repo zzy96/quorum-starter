@@ -45,7 +45,7 @@ consensus=$1
 count=$2
 type=$3
 
-if [ $# -eq 3 ] || [ $4 == "ignore"]
+if [ $# -eq 3 ] || [ $4 == "ignore" ]
 then
     echo "Tessera not used"
     tessera="ignore"
