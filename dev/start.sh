@@ -4,7 +4,6 @@
 
 set -u
 set -e
-source ./format.sh
 
 start_raft(){
     node=$1
