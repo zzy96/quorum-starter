@@ -1,20 +1,20 @@
-pragma solidity ^0.4.15;
+pragma solidity ^0.5.0;
 
 contract SimpleStorage {
-  uint public storedData;
+  uint256 public storedData;
 
-  event valueSet(uint value);
+  event valueSet(uint256 _value);
 
-  function SimpleStorage(uint initVal) {
-    storedData = initVal;
+  constructor(uint256 _initVal) public {
+    storedData = _initVal;
   }
 
-  function set(uint x) {
-    storedData = x;
-    emit valueSet(x);
+  function set(uint256 _x) public {
+    storedData = _x;
+    emit valueSet(_x);
   }
 
-  function get() constant returns (uint retVal) {
+  function get() public view returns (uint256) {
     return storedData;
   }
 }
