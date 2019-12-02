@@ -9,7 +9,7 @@ var twoNodes = ["QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc="];
 var singleNode = [];
 
 var simpleContract = web3.eth.contract(abi);
-var simple = simpleContract.new(42, {from:eth.accounts[0], data: bytecode, gas: 0x47b760, privateFor: allNodes}, function(e, contract) {
+var simple = simpleContract.new(42, {from:eth.accounts[0], data: bytecode, gas: 0x47b760, privateFor: twoNodes}, function(e, contract) {
 	if (e) {
 		console.log("err creating contract", e);
 	} else {
