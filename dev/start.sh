@@ -19,8 +19,13 @@ start_raft(){
     # initialize mandatory args
     ARGS=" --datadir qdata/dd$node --raft --raftport 5040$node --port 2100$j "
     # add additional starting args
-    ARGS+=" --unlock 0 --password passwords.txt --networkid $NETWORK_ID --nodiscover --verbosity 5 --rpc --rpcaddr 0.0.0.0 --rpcport 2200$j --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --rpccorsdomain=* --rpcvhosts=* --ws --wsaddr 0.0.0.0 --wsport 2300$j --wsorigins=* --wsapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints "
+    ARGS+=" --unlock 0 --password passwords.txt --networkid $NETWORK_ID --verbosity 5 --rpc --rpcaddr 0.0.0.0 --rpcport 2200$j --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --rpccorsdomain=* --rpcvhosts=* --ws --wsaddr 0.0.0.0 --wsport 2300$j --wsorigins=* --wsapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints "
     # ARGS+=" --permissioned "
+
+    if [ "$node" == "1" ]
+    then
+      ARGS+=" --raftdnsenable "
+    fi
 
     if [ $NETWORK_ID -eq 1 ]
     then
