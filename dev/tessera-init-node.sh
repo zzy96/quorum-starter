@@ -8,15 +8,15 @@ end=$2
 currentDir=$(pwd)
 for i in $(seq "$start" "$end")
 do
-    DDIR="${currentDir}/qdata/c${i}"
-    mkdir -p ${DDIR}
-    mkdir -p qdata/logs
-    cp "keys/tm${i}.pub" "${DDIR}/tm.pub"
-    cp "keys/tm${i}.key" "${DDIR}/tm.key"
-    rm -f "${DDIR}/tm.ipc"
+  DDIR="${currentDir}/qdata/c${i}"
+  mkdir -p ${DDIR}
+  mkdir -p qdata/logs
+  cp "keys/tm${i}.pub" "${DDIR}/tm.pub"
+  cp "keys/tm${i}.key" "${DDIR}/tm.key"
+  rm -f "${DDIR}/tm.ipc"
 
-    #change tls to "strict" to enable it (don't forget to also change http -> https)
-cat <<EOF > ${DDIR}/tessera-config-10-${i}.json
+  #change tls to "strict" to enable it (don't forget to also change http -> https)
+  cat <<EOF > ${DDIR}/tessera-config-10-${i}.json
 {
     "useWhiteList": false,
     "jdbc": {
@@ -97,9 +97,8 @@ cat <<EOF > ${DDIR}/tessera-config-10-${i}.json
 }
 EOF
 
-# Enclave configurations
-
-cat <<EOF > ${DDIR}/tessera-config-enclave-10-${i}.json
+  # Enclave configurations
+  cat <<EOF > ${DDIR}/tessera-config-enclave-10-${i}.json
 {
     "useWhiteList": false,
     "jdbc": {
@@ -163,7 +162,7 @@ cat <<EOF > ${DDIR}/tessera-config-enclave-10-${i}.json
 }
 EOF
 
-cat <<EOF > ${DDIR}/enclave-10-${i}.json
+  cat <<EOF > ${DDIR}/enclave-10-${i}.json
 {
     "serverConfigs":[
         {
