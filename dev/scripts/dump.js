@@ -7,7 +7,7 @@ var simpleContract = web3.eth.contract(abi);
 // WARNING: console may crash if loop number is too high
 for (var i=0; i<1000; i++) {
   (function(x){
-    var simple = simpleContract.new(42, {from:eth.accounts[0], data: bytecode, gas: 0x47b760}, function(e, contract){
+    var simple = simpleContract.new(42, {from:eth.accounts[0], data:bytecode, gas:0x47b760}, function(e, contract){
       console.log(x, contract.transactionHash);
     });
   })(i);
