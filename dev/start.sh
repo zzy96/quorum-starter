@@ -21,6 +21,7 @@ start_raft(){
     # add additional starting args
     ARGS+=" --networkid $NETWORK_ID --nodiscover --verbosity 5 --rpc --rpcaddr 0.0.0.0 --rpcport 2200$j --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --rpccorsdomain=* --rpcvhosts=* --ws --wsaddr 0.0.0.0 --wsport 2300$j --wsorigins=* --wsapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints "
     # ARGS+=" --permissioned "
+<<<<<<< HEAD
     ARGS+=" --unlock 0 --password passwords.txt "
 
     # Quorum 1.9.7 flags
@@ -29,6 +30,13 @@ start_raft(){
     # then
     #   ARGS+=" --graphql "
     #   # AGRS+=" --signer /Users/ZZY/Library/Signer/clef.ipc "
+=======
+    # ARGS+=" --allow-insecure-unlock "
+    #
+    # if [ $j -eq 0 ]
+    # then
+    #   ARGS+=" --graphql "
+>>>>>>> 89e56bfd972401dfba035a51aadf35930e25dcda
     # fi
 
     if [ $NETWORK_ID -eq 1 ]
