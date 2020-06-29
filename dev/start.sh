@@ -22,12 +22,11 @@ start_raft(){
     ARGS+=" --networkid $NETWORK_ID --nodiscover --verbosity 5 --rpc --rpcaddr 0.0.0.0 --rpcport 2200$j --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --rpccorsdomain=* --rpcvhosts=* --ws --wsaddr 0.0.0.0 --wsport 2300$j --wsorigins=* --wsapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints "
     # ARGS+=" --permissioned "
     ARGS+=" --unlock 0 --password passwords.txt "
-
-    # Quorum 1.9.7 flags
-    # ARGS+=" --allow-insecure-unlock "
+    # Quorum v2.6.0 onwards
+    ARGS+=" --allow-insecure-unlock "
     # if [ $j -eq 0 ]
     # then
-    #   ARGS+=" --graphql "
+    #   # ARGS+=" --graphql "
     #   # AGRS+=" --signer /Users/ZZY/Library/Signer/clef.ipc "
     # fi
 
@@ -70,7 +69,11 @@ start_istanbul(){
     # initialize mandatory args
     ARGS=" --datadir qdata/dd$node --istanbul.blockperiod 1 --port 2100$j "
     # add additional starting args
-    ARGS+=" --unlock 0 --password passwords.txt --networkid $NETWORK_ID --nodiscover --verbosity 5 --rpc --rpcaddr 0.0.0.0 --rpcport 2200$j --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul --rpccorsdomain=* --rpcvhosts=* --ws --wsaddr 0.0.0.0 --wsport 2300$j --wsorigins=* --wsapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul --emitcheckpoints "
+    ARGS+=" --networkid $NETWORK_ID --nodiscover --verbosity 5 --rpc --rpcaddr 0.0.0.0 --rpcport 2200$j --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul --rpccorsdomain=* --rpcvhosts=* --ws --wsaddr 0.0.0.0 --wsport 2300$j --wsorigins=* --wsapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul --emitcheckpoints "
+    # ARGS+=" --permissioned "
+    ARGS+=" --unlock 0 --password passwords.txt "
+    # Quorum v2.6.0 onwards
+    ARGS+=" --allow-insecure-unlock "
 
     if [ $NETWORK_ID -eq 1 ]
     then
